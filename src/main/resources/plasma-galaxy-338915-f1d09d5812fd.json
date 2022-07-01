@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "plasma-galaxy-338915",
+  "private_key_id": "f1d09d5812fdcbab07faf1750ea3b2f78a2da67b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCynEgsptcLLdeE\nFQU914zujUfxPEXkH3atgH2Ld3nulb9ltTPUjfbiRq+MC0R/fmhsYNPB4asL9iBe\nDI9MpTlppcWFDtnhXcaqiPVXZZXjnml8HBnB6k0416dWhNNyriA3YD/3ExSpwatB\nZ/FKW4QpFTRDfNKJhWImX0trOnM6bkH81hxCCWSFflJuzXnAjpMr7n9FknEf+nyE\nuKKmhoG54xq3+N9vgScykw19xAN9ztWPEhTWdEe71wAl9trC19xDEbKU80ks0UFL\nwIaOzoDmd1Eof3sLNiAlx0hWpG7UQECfFqby/naDjv5D/DpDx5cs7oQR8OdbV4m5\njcsJC06nAgMBAAECggEAE8I6McZbL79oghIZPFgmHRXACa3TRYM9i8AVI2KaOIyU\nWdoL283ArBOJxAJTF4+SWbr0chRW6cHWntDg4We9zDQsf6W+8LGBEsiH650vUbjq\njnJFXzBeTpV8y5NyGNOueLHLIbgYpxbnrRqklMc+/ZR87aJXYCNDUl9kZn5W1PXB\npofXXlGLobAPwLm7XJqJyaV+SVEsNUia0t8Yi4kVWEaP1f2elC6iXU97PXz4fIcT\ntLU++NOtWrwiKwHFQK+dN7avT47BKAwBZEFbt+gZ1pmwyHMGwPaABaTagwm6kC+T\nrnkzDMpWxdODJGR0TNEmgz0nJBZ8NHkukzMLhteVsQKBgQD7IidxnCNeq6k1apF7\nlRs1euQ1XaM0KULMg5vQ0xo5sJvGcrXtXfOzl/K7NbO2rJn9DkxXHjBIuIJaiHEM\neboE+JaLjIWZcapS/k7t2VTaANT9C5Svv3y8GYygBOyoxilhlp3BbmhPoF5tKKbe\nQhtb36tTaONbMB2speALBClgAwKBgQC2ElluVROBHHBJaL7rp78gz1yigZ/OfzLY\noTZnqSJhjY3yKK3qctM0nMAUzqjFYmsA59hTXMn1Cns+nC7c0T4eN8UgdOZICBZs\n6oxc2Tc09gjkPq46zmYYIBz9ximy63ryBz2XjZOyEzOj0xpLyh0bcCkwMV0yhHEN\nTB45IzXPjQKBgEWiRsWdwcDyYEzLa+OUiKLfnH+foy1Hc5o5s+7HWjI84jS4gfF7\nZ6OYsllunpI8ccZVPJ27ZTAE2UA5LP+EkSvnsfan1DOj7NJuaXxSEtEQAf7YQzYo\nJnIRs4h7VRPHPpospTmJX6sUkJo792kRc3yaHGtYXhJe2RuSMvlbAg35AoGACAjP\nQXsnnS7wFY01v5hrars7z0ABGU+roruadwCTr9JbTTBWXF4sy8mPAFwOPoeVSTjx\n5tvVXabUwXKK7tuc7iBv5nrCHrOcqbm/7+j18rRYuBm7/oRVJQNlxB0Wgfq6Nivz\nn9hziAwo3zXVlzqYBjnw11uWTUBi7L9LJiJToZECgYEA31QTmdzAhkcgFsJ7hl7j\nVTq9hwbqaO/ZVy+N5TpAVv+HUIJeziFGtgZQ/WLyYm2Z2Vj6GeElv2Gn5nlthYez\n++POMe9nvXXH79xgP7LjWdI8HLlw5TvTWr7HM/5YsEyVVovTwd6fdBT9RMWo4kjl\nnmwbHRn5aMMZMm0knnAKX/A=\n-----END PRIVATE KEY-----\n",
+  "client_email": "amukerjee@plasma-galaxy-338915.iam.gserviceaccount.com",
+  "client_id": "102881760062730241212",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/amukerjee%40plasma-galaxy-338915.iam.gserviceaccount.com"
+}
