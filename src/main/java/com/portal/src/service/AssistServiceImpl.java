@@ -31,13 +31,24 @@ public class AssistServiceImpl implements AssistService {
 	String projectId;
 	@Override
 	public Flux<TrainingSet> getAll() {
+		try {
 		return dataRepo.findAll();
+		}
+		catch(Exception ex) {
+			throw ex;
+		}
+		
 	}
 
 	@Override
 	public Mono<TrainingSet> creatEntry(TrainingSet data) {
 		// TODO Auto-generated method stub
+		try {
 		return dataRepo.save(data);
+		}
+		catch(Exception ex) {
+			throw ex;
+		}
 
 	}
 
