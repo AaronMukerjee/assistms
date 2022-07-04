@@ -11,7 +11,7 @@ import lombok.Data;
 public class TrainingSet {
 
 	@DocumentId
-	private String traningSetId;
+	private String trainingSetId;
 	private String question;
 	private String answer;
 }

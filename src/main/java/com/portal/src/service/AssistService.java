@@ -17,4 +17,6 @@ public interface AssistService {
 	public Intent createIntent( String displayName,
 		    List<String> trainingPhrasesParts,
 		    List<String> messageTexts)throws IOException ;
+	public void deleteQuestionsByIds(List<String> ids);
+	Intent createIntent1(String intentName, List<String> ids,String message) throws IOException;
 }
