@@ -81,7 +81,7 @@ public class AssistController {
 	@CircuitBreaker(fallbackMethod = "createIntentFallBackMethod", name = "CreateIntentFallback")
 	public ResponseEntity<String> createIntent(@RequestBody TrainingDataSet data) throws IOException {
 		try {
-			service.createIntent(data.getDisplayName(), data.getTrainingPhrasesParts(), data.getMessageTexts());
+			service.createIntent(data.getTrainingPhrasesParts(), data.getMessageTexts());
 			return new ResponseEntity<String>("Data was inserted successfully", HttpStatus.CREATED);
 		} catch (RuntimeException ex) {
 			// TODO Auto-generated catch block
@@ -117,19 +117,15 @@ public class AssistController {
 		logger.info("Inside the fall back method of Insert Data");
 		return new ResponseEntity(null, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-
-	@PostMapping("/Intent/v2")
-	public ResponseEntity<Intent> createIntent(@RequestBody IntentRequestBody data) throws IOException {
-		try {
-			logger.info("Calling the service for creating the intent");
-			return new ResponseEntity(service.createIntent1(data.getIntentName(), data.getIds(),data.getMessage()), HttpStatus.OK);
-		} catch (RuntimeException ex) {
-			// TODO Auto-generated catch block
-			logger.info(
-					"The following exception occured while fetching training data from dB" + ex.getLocalizedMessage());
-			TrainingDataFetchException e = new TrainingDataFetchException();
-			e.initCause(ex);
-			throw e;
-		}
-	}
+	/*
+	 * @PostMapping("/Intent/v2") public ResponseEntity<Intent>
+	 * createIntent(@RequestBody IntentRequestBody data) throws IOException { try {
+	 * logger.info("Calling the service for creating the intent"); return new
+	 * ResponseEntity(service.createIntent1(data.getIntentName(),
+	 * data.getIds(),data.getMessage()), HttpStatus.OK); } catch (RuntimeException
+	 * ex) { // TODO Auto-generated catch block logger.info(
+	 * "The following exception occured while fetching training data from dB" +
+	 * ex.getLocalizedMessage()); TrainingDataFetchException e = new
+	 * TrainingDataFetchException(); e.initCause(ex); throw e; } }
+	 */
 }

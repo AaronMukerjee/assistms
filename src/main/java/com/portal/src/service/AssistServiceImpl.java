@@ -95,8 +95,12 @@ public class AssistServiceImpl implements AssistService {
 	}
 
 	@Override
-	public Intent createIntent(String displayName, List<String> trainingPhrasesParts, List<String> messageTexts)
+	public Intent createIntent(String trainingPhrasesPart, String messageText)
 			throws IOException {
+		
+		List<String> trainingPhrasesParts = Arrays.asList(trainingPhrasesPart);
+		List<String> messageTexts = Arrays.asList(messageText);
+		String displayName = System.currentTimeMillis()+"_Intent";
 		// TODO Auto-generated method stub
 		// Instantiates a client
 
