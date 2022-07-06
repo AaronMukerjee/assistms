@@ -98,7 +98,7 @@ public class AssistController {
 
 	public ResponseEntity<String> createIntentFallBackMethod(@RequestBody TrainingDataSet data) throws IOException {
 		logger.info("Inside the fall back method of create Intent");
-		return new ResponseEntity<String>("Data was could not be fetched", HttpStatus.CREATED);
+		return new ResponseEntity<String>("Data was could not be inserted", HttpStatus.INTERNAL_SERVER_ERROR);
 
 	}
 
