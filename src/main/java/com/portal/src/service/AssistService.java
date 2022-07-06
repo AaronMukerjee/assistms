@@ -16,5 +16,5 @@ public interface AssistService {
 	public Mono<TrainingSet> creatEntry(TrainingSet data);
 	public Intent createIntent(String trainingPhrasesPart, String messageText)throws IOException ;
 	public void deleteQuestionsByIds(List<String> ids);
-	Intent createIntent1(String intentName, List<String> ids,String message) throws IOException;
+	Intent createIntent1(String displayName,List<String> trainingPhrasesParts,List<String> messageTexts) throws IOException;
 }

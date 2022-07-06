@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.cloud.dialogflow.v2.Intent;
 import com.portal.src.dto.IntentRequestBody;
 import com.portal.src.dto.TrainingDataSet;
+import com.portal.src.dto.TrainingDataSetV2;
 import com.portal.src.entity.TrainingSet;
 import com.portal.src.exceptions.DataNotDeletedException;
 import com.portal.src.exceptions.IntentNotCreatedException;
@@ -118,10 +119,30 @@ public class AssistController {
 	}
 
 	public ResponseEntity<String> deleteQuestionsFallBackMethod(@RequestBody ArrayList<String> ids) throws IOException {
-
 		logger.info("Inside the fall back method of Insert Data");
 		return new ResponseEntity(null, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	@PostMapping("/Intent1")
+	public ResponseEntity<String> createIntentV2(@RequestBody TrainingDataSetV2 data) throws IOException {
+		try {
+			service.createIntent1(data.getDisplayName(),data.getTrainingPhrasesParts(),data.getMessages());
+			return new ResponseEntity<String>("Data was inserted successfully", HttpStatus.CREATED);
+		} catch (RuntimeException ex) {
+			// TODO Auto-generated catch block
+			logger.info("The following exception occured while inserting new Intent " + ex.getLocalizedMessage());
+			TrainingDataNotInsertedException e = new TrainingDataNotInsertedException();
+			e.initCause(ex);
+			throw e;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * @PostMapping("/Intent/v2") public ResponseEntity<Intent>
 	 * createIntent(@RequestBody IntentRequestBody data) throws IOException { try {

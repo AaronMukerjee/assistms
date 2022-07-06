@@ -62,28 +62,61 @@ public class AssistServiceImpl implements AssistService {
 	}
 
 	@Override
-	public Intent createIntent1(String intentName, List<String> ids, String message) throws IOException {
-		try (IntentsClient intentsClient = IntentsClient.create()) {
-			List<TrainingPhrase> trainingPhrases = new ArrayList<>();
-			AgentName parent = AgentName.of(projectId);
-			Flux<TrainingSet> monoQuestionsList = dataRepo.findAllById(ids);
-			monoQuestionsList.subscribe(TrainingData -> {
-				createIntentUsingEntity(TrainingData, trainingPhrases);
-			});
-			Message messageResponse = Message.newBuilder()
-					.setText(Text.newBuilder().addAllText(Arrays.asList(message)).build()).build();
-			Intent intent = Intent.newBuilder().setDisplayName(intentName).addMessages(messageResponse)
-					.addAllTrainingPhrases(trainingPhrases).build();
-			Optional<Intent> response = Optional.of(intentsClient.createIntent(parent, intent));
-			if (response.isPresent()) {
-				deleteQuestionsByIds(ids);
-				System.out.format("Intent created: %s\n", response);
-				return response.get();
-			} else {
-				throw new IntentNotCreatedException();
-			}
-
+	public Intent createIntent1(String displayName,List<String> trainingPhrasesParts,List<String> messageTexts) throws IOException {
+	
+	  // Instantiates a client
+		if(trainingPhrasesParts==null) {
+			trainingPhrasesParts= Arrays.asList("");
 		}
+	  try (IntentsClient intentsClient = IntentsClient.create()) {
+	    // Set the project agent name using the projectID (my-project-id)
+	    AgentName parent = AgentName.of(projectId);
+
+	    // Build the trainingPhrases from the trainingPhrasesParts
+	    List<TrainingPhrase> trainingPhrases = new ArrayList<>();
+	    for (String trainingPhrase : trainingPhrasesParts) {
+	      trainingPhrases.add(
+	          TrainingPhrase.newBuilder()
+	              .addParts(Part.newBuilder().setText(trainingPhrase).build())
+	              .build());
+	    }
+
+	    // Build the message texts for the agent's response
+	    Message message =
+	        Message.newBuilder().setText(Text.newBuilder().addAllText(messageTexts).build()).build();
+
+	    // Build the intent
+	    Intent intent =
+	        Intent.newBuilder()
+	            .setDisplayName(displayName)
+	            .addMessages(message)
+	            .addAllTrainingPhrases(trainingPhrases)
+	            .build();
+
+	    // Performs the create intent request
+	    Intent response = intentsClient.createIntent(parent, intent);
+	    System.out.format("Intent created: %s\n", response);
+
+	    return response;
+	  }
+		/*
+		 * try (IntentsClient intentsClient = IntentsClient.create()) {
+		 * List<TrainingPhrase> trainingPhrases = new ArrayList<>(); AgentName parent =
+		 * AgentName.of(projectId); Flux<TrainingSet> monoQuestionsList =
+		 * dataRepo.findAllById(ids); monoQuestionsList.subscribe(TrainingData -> {
+		 * createIntentUsingEntity(TrainingData, trainingPhrases); }); Message
+		 * messageResponse = Message.newBuilder()
+		 * .setText(Text.newBuilder().addAllText(Arrays.asList(message)).build()).build(
+		 * ); Intent intent =
+		 * Intent.newBuilder().setDisplayName(intentName).addMessages(messageResponse)
+		 * .addAllTrainingPhrases(trainingPhrases).build(); Optional<Intent> response =
+		 * Optional.of(intentsClient.createIntent(parent, intent)); if
+		 * (response.isPresent()) { deleteQuestionsByIds(ids);
+		 * System.out.format("Intent created: %s\n", response); return response.get(); }
+		 * else { throw new IntentNotCreatedException(); }
+		 * 
+		 * }
+		 */
 	}
 
 	private Intent createIntentUsingEntity(TrainingSet data, List<TrainingPhrase> trainingPhrases) {
