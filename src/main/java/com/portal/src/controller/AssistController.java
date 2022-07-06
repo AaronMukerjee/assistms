@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,7 @@ public class AssistController {
 	public static Logger logger = LoggerFactory.getLogger(AssistController.class);
 
 	@GetMapping("/")
+	@CrossOrigin(origins = "*")
 	@CircuitBreaker(fallbackMethod = "getAllQuestionsFallBack", name = "DataFetchFallback")
 	public ResponseEntity<Flux<TrainingSet>> getAllQuestions() {
 		try {
@@ -57,6 +59,7 @@ public class AssistController {
 	}
 
 	@PostMapping("/")
+	@CrossOrigin(origins = "*")
 	@CircuitBreaker(fallbackMethod = "insertDataFallBackMethod", name = "InsertDataFallback")
 	public ResponseEntity<Mono<TrainingSet>> insertData(@RequestBody TrainingSet data) {
 		try {
@@ -78,6 +81,7 @@ public class AssistController {
 	}
 
 	@PostMapping("/Intent")
+	@CrossOrigin(origins = "*")
 	@CircuitBreaker(fallbackMethod = "createIntentFallBackMethod", name = "CreateIntentFallback")
 	public ResponseEntity<String> createIntent(@RequestBody TrainingDataSet data) throws IOException {
 		try {
@@ -99,6 +103,7 @@ public class AssistController {
 	}
 
 	@DeleteMapping
+	@CrossOrigin(origins = "*")
 	@CircuitBreaker(fallbackMethod = "deleteQuestionsFallBackMethod", name = "DeleteIntentFallback")
 	public ResponseEntity<String> deleteQuestions(@RequestBody ArrayList<String> ids) throws IOException {
 		try {
