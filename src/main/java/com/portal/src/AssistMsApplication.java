@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 
-@SpringBootApplication(scanBasePackages = {"com.portal.src", "com.digiassist.auth"})
+@SpringBootApplication
 public class AssistMsApplication {
 
 	public static void main(String[] args) {
